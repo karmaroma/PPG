@@ -1,8 +1,8 @@
-package com.ppg;
+package Docs;
 
 import org.junit.jupiter.api.*;
 
-public class firstTest {
+public class JunitExamples {
 
     @BeforeAll
     static void beforeAll() {

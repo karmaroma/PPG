@@ -1,3 +1,4 @@
+
 plugins {
     id 'java-library'
 }
@@ -7,43 +8,12 @@ repositories {
 }
 
 dependencies {
-    testImplementation "com.codeborne:selenide:6.1.1"
-    testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.8.2"
+    testImplementation('com.codeborne:selenide:6.0.3',
+            'org.junit.jupiter:junit-jupiter:5.8.1')
+    testRuntimeOnly('org.slf4j:slf4j-simple:1.7.32',
+            'org.junit.jupiter:junit-jupiter-engine:5.8.1')
 }
 
 test {
     useJUnitPlatform()
 }
-
-/*
-def selenideVersion = "5.19.0",
-    junitVersion = "5..1"
-
-dependencies {
-    testImplementation (
-            "com.codeborne:selenide:$selenideVersion",
-            "org.junit.jupiter:junit-jupiter-api:$junitVersion")
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-test {
-    useJUnitPlatform()
-}
-
-task one_test(type: Test) {
-    useJUnitPlatform {
-        includeTags 'one'
-    }
-}
-
-task without_one_test(type: Test) {
-    useJUnitPlatform {
-        excludeTags 'one'
-    }
-}
-*/
