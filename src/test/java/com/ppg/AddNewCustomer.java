@@ -1,8 +1,11 @@
 package com.ppg;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.util.Locale;
 
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
@@ -14,33 +17,58 @@ public class AddNewCustomer {
     static void beforeAll(){
         Configuration.browserSize = "1900x1080";
     }
-    String mail = "Myppg@test.com";
 
+    Faker faker = new Faker();
+    Faker usFaker = new Faker(new Locale("en-US"));
+
+    String name = faker.funnyName().name();
+    String firstName = faker.name().firstName(); // Emory
+    String lastName = faker.name().lastName(); // Barton
+    String cpcCode = faker.number().digits(5);
+    String PPGNumber = faker.number().digits(5);
+    String THDNumber = faker.number().digits(3);
+    String addressLine1 = faker.address().streetAddress();
+    String addressLine2 = faker.address().secondaryAddress();
+    String city = faker.address().city();
+    String zip = faker.address().zipCodeByState(faker.address().stateAbbr());
+    String contactName = faker.name().fullName();
+    String emailAddress = faker.internet().emailAddress();
+    String phone = faker.phoneNumber().cellPhone();
+    String shipName = faker.twinPeaks().character();
+    String shippingAddress = faker.address().streetAddress();
+    String shippingAddress2 = faker.address().secondaryAddress();
+    String city2 = faker.address().cityName();
+    String zip2 = faker.address().zipCodeByState(faker.address().stateAbbr());
+    String state = faker.address().state();
+    String state2 = faker.address().state();
+
+   /* String mail = "Myppg@test.com";v
     String fillingLocation = "Facility-A";
     String customer = "4 Customer";
-    String cpcCode = "008";
-    String PPGNumber = "009";
-    String THDNumber = "0020";
-    String shippingAddress = "Avenue the5th, ,NEW Jersey, NJ, US, 23011";
-    String shippingAddress2 = "Park Ave 15th, ,NEW York, NY, US, 11011";
-    String name = "Harry the Potter";
-    String addressLine1 = "66 BIGRaton st.";
-    String addressLine2 = "77 SMALLBoca st.";
-    String city = "Default";
-    String emailAddress = "mailPPG@test.com";
-    String contactName = "John Doe";
+    String cpcCode = "01228";
+    String PPGNumber = "31234";
+    String THDNumber = "6766";
+    String shippingAddress = "Elm street 13 666 ";
+    String shippingAddress2 = "Elm Streeet 222";
+    String name = "Customer_19_01_02";
+    String addressLine1 = "88 WErnt st.";
+    String addressLine2 = "99 Gripp st.";
+    String city = "New Jersey";
+    String emailAddress = "FreddyKr@test.com";
+    String contactName = "Ann ";
     String country = "United States";
     String contact = "John Doe";
     String state = "Florida";
     String zip = "32003";
     String phone ="850245500";
-    String city2 = "Boston";
+    String city2 = "Null";
     String zip2 = "54666";
     String phone2 ="960545500";
     String city3 = "Chicago";
     String zip3 = "54666";
     String phone3 ="960545500";
-    String shipName = "Billie Eilish";
+    String shipName = "Henry McHenry";*/
+
 
 
     @Test
@@ -78,7 +106,7 @@ public class AddNewCustomer {
         $("[formcontrolname=addressLine1]").setValue(addressLine1);
         $("[formcontrolname=addressLine2]").setValue(addressLine2);
         $("[aria-label=State]").click();
-        $(byText("South Dakota")).click();
+        $(byText(state)).click();
         $("[formcontrolname=city]").setValue(city);
         $("[formcontrolname=zip]").setValue(zip);
         $(byText("Add")).click();
@@ -99,31 +127,14 @@ public class AddNewCustomer {
         $("[formcontrolname=addressLine1]").setValue(shippingAddress);
         $("[formcontrolname=addressLine2]").setValue(shippingAddress2);
         $("[aria-label=State]").click();
-        $(byText("New York")).click();
+        $(byText(state2)).click();
         $("[formcontrolname=city]").setValue(city2);
         $("[formcontrolname=zip]").setValue(zip2);
         $(byText("Add")).click();
         $(byText("Create")).click();
 
 
-
-
-
         sleep(2000);
-
-
-
-
-
-
-
-        //
-
-
-
-
-
-
 
         sleep(4000);
 
