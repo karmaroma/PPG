@@ -21,7 +21,8 @@ public class AddNewCustomer {
     Faker faker = new Faker();
     Faker usFaker = new Faker(new Locale("en-US"));
 
-    String name = faker.funnyName().name();
+   // String name = faker.funnyName().name();
+    String name = faker.company().name();
     String firstName = faker.name().firstName(); // Emory
     String lastName = faker.name().lastName(); // Barton
     String cpcCode = faker.number().digits(5);
@@ -75,17 +76,24 @@ public class AddNewCustomer {
     void fillFormTest(){
      //Authorization
         open("https://devppgsupplyorderingportal.azurewebsites.net/");
+        //dev
+     //   open("https://app-thdportal-dev-01.azurewebsites.net/");
+        //stage
+         // open("https://app-thdportal-stg-01.azurewebsites.net/");
+
         sleep(2000);
         $("[name=loginfmt]").setValue("rgolovin@ppg.com");
         $("[type=submit]").click();
         sleep(2000);
-        $("[name=passwd]").setValue("2dMETtBnxmH8V3f");
+        $("[name=passwd]").setValue("71305@Asdf");
         $("[type=submit]").click();
-        sleep(2000);
-        $(".table-cell.text-left.content").click();
-        sleep(15000);
-        $("[value=Verify]").click();
         sleep(1000);
+        //$(".table-cell.text-left.content").click();
+        $("[data-value=PhoneAppNotification]").click();
+        //$("[data-value=OneWaySMS]").click();
+        //sleep(5000);
+        //$("[value=Verify]").click();
+        sleep(10000);
         $("#idSIButton9").click();
         sleep(1000);
 
@@ -101,7 +109,7 @@ public class AddNewCustomer {
         $("[formcontrolname=thdCustomerNumber]").setValue(THDNumber);
 
         //Add Billing Address
-        $(byText("Add Billing Address")).click();
+        $(byText("Add billing address")).click();
         $(".cdk-overlay-pane").$("[formcontrolname=name]").setValue(name);
         $("[formcontrolname=addressLine1]").setValue(addressLine1);
         $("[formcontrolname=addressLine2]").setValue(addressLine2);
@@ -133,8 +141,6 @@ public class AddNewCustomer {
         $(byText("Add")).click();
         $(byText("Create")).click();
 
-
-        sleep(2000);
 
         sleep(4000);
 
