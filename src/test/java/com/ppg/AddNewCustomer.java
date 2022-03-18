@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
 import java.util.Locale;
 
@@ -75,11 +76,11 @@ public class AddNewCustomer {
     @Test
     void fillFormTest(){
      //Authorization
-        open("https://devppgsupplyorderingportal.azurewebsites.net/");
+        // open("https://devppgsupplyorderingportal.azurewebsites.net/");
         //dev
-     //   open("https://app-thdportal-dev-01.azurewebsites.net/");
+       //open("https://app-thdportal-dev-01.azurewebsites.net/");
         //stage
-         // open("https://app-thdportal-stg-01.azurewebsites.net/");
+          open("https://app-thdportal-stg-01.azurewebsites.net/");
 
         sleep(2000);
         $("[name=loginfmt]").setValue("rgolovin@ppg.com");
@@ -110,7 +111,7 @@ public class AddNewCustomer {
 
         //Add Billing Address
         $(byText("Add billing address")).click();
-        $(".cdk-overlay-pane").$("[formcontrolname=name]").setValue(name);
+      //  $(".cdk-overlay-pane").$("[formcontrolname=name]").setValue(name);
         $("[formcontrolname=addressLine1]").setValue(addressLine1);
         $("[formcontrolname=addressLine2]").setValue(addressLine2);
         $("[aria-label=State]").click();
@@ -126,8 +127,8 @@ public class AddNewCustomer {
         $("[formcontrolname=emailAddress]").setValue(emailAddress);
         $("[formcontrolname=phoneNumber]").setValue(phone);
         $(byText("Add")).click();
-        $(".card__more").click();
-        $("[role=menuitem]").click();
+        $(By.xpath("/html/body/app-root/div/app-customer-add/app-customer-form/form/section[2]/div/mat-card/mat-card-title/div/mat-icon[2]")).click();
+        $("[role=menuitem").click();
 
         //Add New Shipping Address
         $(byText("Add New Shipping Address")).click();
